@@ -1,7 +1,9 @@
+const { Circle, Square, Triangle, Diamond } = require('./lib/shapes.js');
 const fs = require('fs');
 
-const { Circle, Square, Triangle, Diamond } = require('./lib/shapes.js');
+// Import the required modules
 
+// Define the questions for the user prompt
 const questions = [
     {
         type: 'input',
@@ -27,15 +29,21 @@ const questions = [
     }
 ];
 
+// Main code block
 (async () => {
+    // Import the 'inquirer' module
     const inquirer = await import('inquirer');
 
+    // Prompt the user with the defined questions
     inquirer.default.prompt(questions)
     .then(answers => {
+        // Retrieve the user's answers
         let { name, shape, textColor, shapeColor } = answers;
 
+        // Convert the name to uppercase
         name = name.toUpperCase();
 
+        // Create the shape object based on the user's choice
         let shapeObj;
         switch (shape) {
             case 'circle':
@@ -51,16 +59,23 @@ const questions = [
                 shapeObj = new Diamond(shapeColor);
                 break;
         }
+
+        // Generate the SVG code for the logo
         const svg = `
             <svg width="300" height="200">
                 ${shapeObj.render()}
                 <text x="150" y="100" font-size="50" fill="${textColor}" text-anchor="middle">${name}</text>
             </svg>
         `;
+
+        // Generate a unique filename based on the current timestamp
         const timestamp = new Date().getTime();
         const filename = `logo_${timestamp}.svg`;
+
+        // Write the SVG code to a file
         fs.writeFileSync(`./examples/${filename}`, svg);
+
+        // Print a success message with the filename
         console.log(`Logo created! Check examples/${filename}`);
-    }
-    );
+    });
 })();
