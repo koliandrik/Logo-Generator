@@ -13,6 +13,12 @@
 ## Usage
     To use the generator you first have to invoke it from the terminal by typing 'node index.js'.
 
-## Screenshots
+## Demo Link
+
+https://drive.google.com/file/d/1Ha5zKgWHjy0md1RQFG6hqniAI_qq5KTO/view
+
+## Repository Link
+
+https://github.com/koliandrik/Logo-Generator
     
       
