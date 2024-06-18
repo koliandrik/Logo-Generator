@@ -55,6 +55,7 @@ const questions = [
             </svg>
         `;
         fs.writeFileSync( './examples/logo.svg', svg);
+        console.log('Logo created! Check examples/logo.svg');
     }
     );
 })();
