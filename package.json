@@ -1,0 +1,19 @@
+{
+    "name": "logo-generator",
+    "version": "1.0.0",
+    "description": "A logo generator application",
+    "main": "index.js",
+    "directories": {
+        "example": "examples",
+        "lib": "lib"
+    },
+    "scripts": {
+        "test": "jest"
+    },
+    "dependencies": {
+        "inquirer":"^9.2.23"
+    },
+    "devDependencies": {
+        "jest":"^29.7.0"
+    }
+}
