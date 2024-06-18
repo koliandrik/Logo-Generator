@@ -30,8 +30,11 @@ const questions = [
 (async () => {
     const inquirer = await import('inquirer');
 
-    inquirer.default.prompt(questions).then(answers => {
-        const { name, shape, textColor, shapeColor } = answers;
+    inquirer.default.prompt(questions)
+    .then(answers => {
+        let { name, shape, textColor, shapeColor } = answers;
+
+        name = name.toUpperCase();
 
         let shapeObj;
         switch (shape) {
@@ -54,8 +57,10 @@ const questions = [
                 <text x="150" y="100" font-size="50" fill="${textColor}" text-anchor="middle">${name}</text>
             </svg>
         `;
-        fs.writeFileSync( './examples/logo.svg', svg);
-        console.log('Logo created! Check examples/logo.svg');
+        const timestamp = new Date().getTime();
+        const filename = `logo_${timestamp}.svg`;
+        fs.writeFileSync(`./examples/${filename}`, svg);
+        console.log(`Logo created! Check examples/${filename}`);
     }
     );
 })();
